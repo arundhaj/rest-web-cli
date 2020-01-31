@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatIconModule } from '@angular/material/icon';
 import { AceEditorModule } from 'ng2-ace-editor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 
@@ -33,6 +34,7 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     MatButtonModule,
     MatToolbarModule,
     MatTabsModule,
+    MatIconModule,
     AceEditorModule,
     NgxSpinnerModule
   ],

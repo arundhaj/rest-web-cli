@@ -15,6 +15,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   response: any;
   responseBody: any;
 
+  requestParamsEmpty = {Key: '', Value: ''};
+  requestParams = [{...this.requestParamsEmpty}];
+  requestHeadersEmpty = {Key: '', Value: ''};
+  requestHeaders = [{...this.requestHeadersEmpty}];
+
   requestBody: any;
 
   selectedHttpMethod = 'GET';
@@ -67,5 +72,39 @@ export class AppComponent implements OnInit, AfterViewInit {
   clearPrevState() {
     this.errorMessage = '';
     this.responseBody = '';
+  }
+
+  requestParamChanged(param) {
+    const index = this.requestParams.indexOf(param);
+
+    if (index === this.requestParams.length - 1) {
+      this.requestParams.push({...this.requestParamsEmpty});
+    }
+  }
+
+  deleteRequestParam(param) {
+    const index = this.requestParams.indexOf(param);
+    this.requestParams.splice(index, 1);
+
+    if (this.requestParams.length === 0) {
+      this.requestParams.push({...this.requestParamsEmpty});
+    }
+  }
+
+  requestHeaderChanged(header) {
+    const index = this.requestHeaders.indexOf(header);
+
+    if (index === this.requestHeaders.length - 1) {
+      this.requestHeaders.push({...this.requestHeadersEmpty});
+    }
+  }
+
+  deleteRequestHeader(header) {
+    const index = this.requestHeaders.indexOf(header);
+    this.requestHeaders.splice(index, 1);
+
+    if (this.requestHeaders.length === 0) {
+      this.requestHeaders.push({...this.requestHeadersEmpty});
+    }
   }
 }

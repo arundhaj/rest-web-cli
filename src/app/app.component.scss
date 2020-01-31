@@ -15,8 +15,9 @@
 .section {
     border: 1px solid lightgray;
     width: 100%;
-    min-height: 349px;
+    height: 349px;
     margin: 10px 0;
+    overflow: auto;
 }
 
 .header {
@@ -49,5 +50,37 @@
         border: 1px solid lightgray;
         text-align: left;
         padding: 7px;
+    }
+}
+
+.request-params-table {
+    font-size: 12px;
+    width: 100%;
+    border-collapse: collapse;
+
+    tr {
+        height: 30px;
+    }
+
+    th {
+        background-color: #eee;
+    }
+
+    th, td {
+        border: 1px solid lightgray;
+        text-align: left;
+        padding: 0px;
+    }
+
+    input {
+        width: 100%;
+        padding: 5px;
+        box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;        
+    }
+
+    .mat-icon {
+        cursor: pointer;
     }
 }
