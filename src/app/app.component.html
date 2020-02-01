@@ -40,10 +40,10 @@
             <tr><th>KEY</th><th>VALUE</th><th></th></tr>
           </thead>
           <tbody>
-            <tr *ngFor="let param of requestParams">
-              <td><input type="text" [(ngModel)]="param.Key" (ngModelChange)="requestParamChanged(param)"></td>
-              <td><input type="text" [(ngModel)]="param.Value" (ngModelChange)="requestParamChanged(param)"></td>
-              <td (click)="$event.stopPropagation()" style="width: 5px;"><mat-icon (click)="deleteRequestParam(param)">clear</mat-icon></td>
+            <tr *ngFor="let param of requestParams; let idx = index">
+              <td><input type="text" [(ngModel)]="param.Key" (ngModelChange)="requestParamChanged(idx)"></td>
+              <td><input type="text" [(ngModel)]="param.Value" (ngModelChange)="requestParamChanged(idx)"></td>
+              <td><mat-icon (click)="deleteRequestParam(idx)">clear</mat-icon></td>
             </tr>
           </tbody>
         </table>
@@ -54,10 +54,10 @@
             <tr><th>KEY</th><th>VALUE</th><th></th></tr>
           </thead>
           <tbody>
-            <tr *ngFor="let header of requestHeaders">
-              <td><input type="text" [(ngModel)]="header.Key" (ngModelChange)="requestHeaderChanged(header)"></td>
-              <td><input type="text" [(ngModel)]="header.Value" (ngModelChange)="requestHeaderChanged(header)"></td>
-              <td (click)="$event.stopPropagation()" style="width: 5px;"><mat-icon (click)="deleteRequestHeader(header)">clear</mat-icon></td>
+            <tr *ngFor="let header of requestHeaders; let idx = index">
+              <td><input type="text" [(ngModel)]="header.Key" (ngModelChange)="requestHeaderChanged(idx)"></td>
+              <td><input type="text" [(ngModel)]="header.Value" (ngModelChange)="requestHeaderChanged(idx)"></td>
+              <td style="width: 5px;"><mat-icon (click)="deleteRequestHeader(idx)">clear</mat-icon></td>
             </tr>
           </tbody>
         </table>
