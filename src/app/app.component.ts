@@ -55,13 +55,29 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   sendRequest() {
     this.clearPrevState();
+
+    const queryParamList = [];
+    let queryUrl = this.inputUrl;
+
+    this.requestParams.forEach(param => {
+      if (param.Key && param.Value) {
+        queryParamList.push(param.Key + '=' + param.Value);
+      }
+    });
+
+    if (queryParamList.length > 0) {
+      queryUrl += '?' + queryParamList.join('&');
+    }
+
     this.loading = true;
     this.spinner.show();
-    this.http.request(this.selectedHttpMethod, this.inputUrl, { observe: 'response' }).subscribe((successResponse) => {
+    this.http.request(this.selectedHttpMethod, queryUrl, { observe: 'response' }).subscribe((successResponse) => {
       this.response = successResponse;
       this.responseBody = JSON.stringify(successResponse.body, null, 2);
-    }, (error) => {
-      this.errorMessage = error.message;
+    }, (errorResponse) => {
+      this.response = errorResponse;
+      this.errorMessage = errorResponse.message;
+      this.responseBody = JSON.stringify(errorResponse.error, null, 2);
     }).add(() => {
       this.loading = false;
       this.spinner.hide();
@@ -81,10 +97,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   deleteRequestParam(idx) {
     this.requestParams.splice(idx, 1);
-
-    if (this.requestParams.length === 0) {
-      this.requestParams.push({...this.requestParamsEmpty});
-    }
   }
 
   requestHeaderChanged(idx) {
@@ -95,9 +107,5 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   deleteRequestHeader(idx) {
     this.requestHeaders.splice(idx, 1);
-
-    if (this.requestHeaders.length === 0) {
-      this.requestHeaders.push({...this.requestHeadersEmpty});
-    }
   }
 }

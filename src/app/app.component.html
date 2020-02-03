@@ -43,7 +43,7 @@
             <tr *ngFor="let param of requestParams; let idx = index">
               <td><input type="text" [(ngModel)]="param.Key" (ngModelChange)="requestParamChanged(idx)"></td>
               <td><input type="text" [(ngModel)]="param.Value" (ngModelChange)="requestParamChanged(idx)"></td>
-              <td><mat-icon (click)="deleteRequestParam(idx)">clear</mat-icon></td>
+              <td><mat-icon (click)="idx !== this.requestParams.length - 1 && deleteRequestParam(idx)">clear</mat-icon></td>
             </tr>
           </tbody>
         </table>
@@ -57,7 +57,7 @@
             <tr *ngFor="let header of requestHeaders; let idx = index">
               <td><input type="text" [(ngModel)]="header.Key" (ngModelChange)="requestHeaderChanged(idx)"></td>
               <td><input type="text" [(ngModel)]="header.Value" (ngModelChange)="requestHeaderChanged(idx)"></td>
-              <td style="width: 5px;"><mat-icon (click)="deleteRequestHeader(idx)">clear</mat-icon></td>
+              <td style="width: 5px;"><mat-icon (click)="idx !== this.requestHeaders.length - 1 && deleteRequestHeader(idx)">clear</mat-icon></td>
             </tr>
           </tbody>
         </table>

@@ -72,15 +72,13 @@
     th {
         background-color: #eee;
         padding-left: 10px;
-        border: 1px solid lightgray;
-        text-align: left;
     }
 
     th:last-child {
         width: 5px;
     }
 
-    td {
+    td, th {
         border: 1px solid lightgray;
         text-align: left;
     }
@@ -88,10 +86,10 @@
     input {
         width: 100%;
         padding: 5px;
+        border: none;
         box-sizing: border-box;
         -moz-box-sizing: border-box;
         -webkit-box-sizing: border-box;
-        border: none;
     }
 
     .mat-icon {
