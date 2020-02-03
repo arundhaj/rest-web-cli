@@ -1,5 +1,5 @@
 import { Component, ViewChild, AfterViewInit, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as ace from 'ace-builds';
 import { NgxSpinnerService } from 'ngx-spinner';
 
@@ -69,9 +69,18 @@ export class AppComponent implements OnInit, AfterViewInit {
       queryUrl += '?' + queryParamList.join('&');
     }
 
+    let headers = new HttpHeaders();
+    this.requestHeaders.forEach(header => {
+      if (header.Key && header.Value) {
+        headers = headers.set(header.Key, header.Value);
+      }
+    });
+
     this.loading = true;
     this.spinner.show();
-    this.http.request(this.selectedHttpMethod, queryUrl, { observe: 'response' }).subscribe((successResponse) => {
+    this.http.request(this.selectedHttpMethod,
+        queryUrl,
+        { headers: headers, observe: 'response' }).subscribe((successResponse) => {
       this.response = successResponse;
       this.responseBody = JSON.stringify(successResponse.body, null, 2);
     }, (errorResponse) => {
