@@ -9,7 +9,7 @@
       <div fxFlex="10" style="padding-right: 5px;">
         <mat-form-field class="full-width">
           <mat-label>Method</mat-label>
-          <mat-select id="inputMethod" name="inputMethod" [(ngModel)]="selectedHttpMethod">
+          <mat-select id="inputMethod" name="inputMethod" [(ngModel)]="requestHttpMethod">
             <mat-option *ngFor="let httpMethod of httpMethods" [value]="httpMethod">{{ httpMethod }}</mat-option>
           </mat-select>
         </mat-form-field>

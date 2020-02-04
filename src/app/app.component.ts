@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   requestBody: any;
 
-  selectedHttpMethod = 'GET';
+  requestHttpMethod = 'GET';
   httpMethods = ['GET', 'POST', 'PUT', 'DELETE'];
 
   errorMessage = '';
@@ -78,9 +78,12 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     this.loading = true;
     this.spinner.show();
-    this.http.request(this.selectedHttpMethod,
-        queryUrl,
-        { headers: headers, observe: 'response' }).subscribe((successResponse) => {
+    this.http.request(this.requestHttpMethod, queryUrl,
+        { 
+          headers: headers,
+          body: this.requestBody,
+          observe: 'response'
+        }).subscribe((successResponse) => {
       this.response = successResponse;
       this.responseBody = JSON.stringify(successResponse.body, null, 2);
     }, (errorResponse) => {
