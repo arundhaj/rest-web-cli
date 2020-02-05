@@ -30,7 +30,7 @@
               { "glob": "worker-json.js", "input": "./node_modules/ace-builds/src-min/", "output": "/" }
             ],
             "styles": [
-              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss"
             ],
             "scripts": [
